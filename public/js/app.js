@@ -27,7 +27,7 @@ domready(function() {
 
 });
 
-},{"./view/main.js":6,"domready":2}],2:[function(require,module,exports){
+},{"./view/main.js":9,"domready":2}],2:[function(require,module,exports){
 /*!
   * domready (c) Dustin Diaz 2014 - License MIT
   */
@@ -16681,15 +16681,75 @@ domready(function() {
 //# sourceMappingURL=ractive.js.map
 
 },{}],4:[function(require,module,exports){
+var Ractive = require('ractive');
+
+module.exports = Ractive.extend({
+
+  isolated: true,
+
+  data: {
+  },
+
+  computed: {
+  },
+
+  oninit: function() {
+  },
+
+  onrender: function() {
+  }
+
+});
+
+},{"ractive":3}],5:[function(require,module,exports){
+module.exports={"v":3,"t":[{"t":7,"e":"div","a":{"class":"clues"},"f":[{"t":7,"e":"h2","f":["The Clues"]}," ",{"t":4,"f":[{"t":7,"e":"div","a":{"class":"clue"},"f":[{"t":7,"e":"h3","a":{"class":"clue__title"},"f":[{"t":2,"x":{"r":["i"],"s":"_0+1"}}," - ",{"t":2,"r":"clue"}]}," ",{"t":4,"f":[{"t":7,"e":"div","a":{"class":"clue__hint"},"f":[{"t":2,"r":"hint"}]}],"r":"hintsOn"}]}],"i":"i","r":"clues"}]}]}
+},{}],6:[function(require,module,exports){
+/**
+ * @module:   clues
+ * @scss:     ./source/css/module/clues.scss
+ * @html:     ./source/js/module/clues/clues.html
+ */
+
+
+var Module = require('../abstract-module');
+
+module.exports = Module.extend({
+
+  template: require('./clues.html'),
+
+  data: function () {
+    return {
+        hintsOn: false,
+        clues: [
+          {
+              clue: "this is a clue",
+              answer: "this is an answer",
+              letters: function() {
+                //  do something here? 
+              },
+              hint: "this is a hint"
+          },
+          {
+              clue: "this is another clue",
+              answer: "this is another answer",
+              hint: "this is another hint"
+          }
+        ]
+    };
+  }
+
+});
+
+},{"../abstract-module":4,"./clues.html":5}],7:[function(require,module,exports){
 /*auto-generated*/
 var modules = {};
-
+modules['ui-clues'] = require('./clues/clues.js');
 
 module.exports = modules;
 
-},{}],5:[function(require,module,exports){
-module.exports={"v":3,"t":[{"t":7,"e":"h1","f":["Hello world."]}]}
-},{}],6:[function(require,module,exports){
+},{"./clues/clues.js":6}],8:[function(require,module,exports){
+module.exports={"v":3,"t":[{"t":7,"e":"h1","f":["Yarr"]}," ",{"t":7,"e":"ui-clues"}]}
+},{}],9:[function(require,module,exports){
 var Ractive = require('ractive');
 Ractive.components = require('../module');
 
@@ -16717,7 +16777,7 @@ module.exports = function() {
 
 };
 
-},{"../module":4,"./main.html":5,"ractive":3}]},{},[1])
+},{"../module":7,"./main.html":8,"ractive":3}]},{},[1])
 
 
 //# sourceMappingURL=app.js.map
