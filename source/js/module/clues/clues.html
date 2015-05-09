@@ -6,21 +6,26 @@
 
 <div class="clues">
     <h2>The Clues</h2>
+    <hr>
 
-    {{#clues:i}}
+    <div class="clues__list">
 
-    <div class="clue">
-        <h3 class="clue__title">{{i+1}} - {{clue}}</h3>
+        {{#clues:i}}
 
-        <!-- TODO: how to split {{solution}} into letters - in the js? -->
-        <!-- {{#letters:l}}
-        <input class="clue__input" data-clue-id="{{i}}" data-letter-id="{{l}}" type="text" />
-        {{/}} -->
+        <div class="clue">
+            <h3 class="clue__title">{{i+1}} - {{clue}}</h3>
 
-        {{#hintsOn}}
-        <div class="clue__hint">{{hint}}</div>
+            <!-- TODO: how to split {{solution}} into letters - in the js? -->
+            <!-- {{#letters:l}}
+            <input class="clue__input" data-clue-id="{{i}}" data-letter-id="{{l}}" type="text" />
+            {{/}} -->
+
+            {{#hintsOn}}
+            <div class="clue__hint">{{hint}}</div>
+            {{/}}
+        </div>
+
         {{/}}
     </div>
 
-    {{/}}
 </div>

@@ -45,6 +45,7 @@
  *
  * github.com/inuitcss | inuitcss.com
  */
+@import url(http://fonts.googleapis.com/css?family=Old+Standard+TT);
 /**
  * Shortcut to create the base of a pseudo-element (:after, :before)
  * You can set any position and dimension you want
@@ -646,7 +647,9 @@ li > ol {
 
 html, body {
   width: 100%;
-  min-height: 100%; }
+  min-height: 100%;
+  background-color: #FAF2D9;
+  font-family: 'Old Standard TT', serif; }
 
 /*------------------------------------*    #LAYOUT
 \*------------------------------------*/
@@ -793,6 +796,37 @@ html, body {
  * @js:       ./source/js/module/clues/clues.js
  * @html:     ./source/js/module/clues/clues.html
  */
+.clues {
+  width: 80%;
+  margin: 40px auto 0; }
+  .clues h2 {
+    margin: 5px;
+    text-align: center; }
+  .clues hr {
+    width: 80px;
+    height: 1px;
+    margin: 0 auto;
+    background-color: black;
+    border: 0; }
+  .clues .clues__list {
+    margin: 40px auto; }
+
+/**
+ * @module:   hero
+ * @js:       ./source/js/module/hero/hero.js
+ * @html:     ./source/js/module/hero/hero.html
+ */
+.hero {
+  padding: 40px;
+  position: relative;
+  background-color: #F5C660; }
+  .hero .hero__logo {
+    max-width: 100%;
+    width: 400px;
+    height: 200px;
+    margin: 0 auto;
+    background: url("../img/henhunt.svg") no-repeat 0 0; }
+
 /*------------------------------------*    #SPACING
 \*------------------------------------*/
 /**

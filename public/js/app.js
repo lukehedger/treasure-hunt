@@ -27,7 +27,7 @@ domready(function() {
 
 });
 
-},{"./view/main.js":9,"domready":2}],2:[function(require,module,exports){
+},{"./view/main.js":11,"domready":2}],2:[function(require,module,exports){
 /*!
   * domready (c) Dustin Diaz 2014 - License MIT
   */
@@ -16702,7 +16702,7 @@ module.exports = Ractive.extend({
 });
 
 },{"ractive":3}],5:[function(require,module,exports){
-module.exports={"v":3,"t":[{"t":7,"e":"div","a":{"class":"clues"},"f":[{"t":7,"e":"h2","f":["The Clues"]}," ",{"t":4,"f":[{"t":7,"e":"div","a":{"class":"clue"},"f":[{"t":7,"e":"h3","a":{"class":"clue__title"},"f":[{"t":2,"x":{"r":["i"],"s":"_0+1"}}," - ",{"t":2,"r":"clue"}]}," ",{"t":4,"f":[{"t":7,"e":"div","a":{"class":"clue__hint"},"f":[{"t":2,"r":"hint"}]}],"r":"hintsOn"}]}],"i":"i","r":"clues"}]}]}
+module.exports={"v":3,"t":[{"t":7,"e":"div","a":{"class":"clues"},"f":[{"t":7,"e":"h2","f":["The Clues"]}," ",{"t":7,"e":"hr"}," ",{"t":7,"e":"div","a":{"class":"clues__list"},"f":[{"t":4,"f":[{"t":7,"e":"div","a":{"class":"clue"},"f":[{"t":7,"e":"h3","a":{"class":"clue__title"},"f":[{"t":2,"x":{"r":["i"],"s":"_0+1"}}," - ",{"t":2,"r":"clue"}]}," ",{"t":4,"f":[{"t":7,"e":"div","a":{"class":"clue__hint"},"f":[{"t":2,"r":"hint"}]}],"r":"hintsOn"}]}],"i":"i","r":"clues"}]}]}]}
 },{}],6:[function(require,module,exports){
 /**
  * @module:   clues
@@ -16741,15 +16741,33 @@ module.exports = Module.extend({
 });
 
 },{"../abstract-module":4,"./clues.html":5}],7:[function(require,module,exports){
+module.exports={"v":3,"t":[{"t":7,"e":"div","a":{"class":"hero"},"f":[{"t":7,"e":"div","a":{"class":"hero__logo"}}]}]}
+},{}],8:[function(require,module,exports){
+/**
+ * @module:   hero
+ * @scss:     ./source/css/module/hero.scss
+ * @html:     ./source/js/module/hero/hero.html
+ */
+
+
+var Module = require('../abstract-module');
+
+module.exports = Module.extend({
+
+  template: require('./hero.html')
+
+});
+
+},{"../abstract-module":4,"./hero.html":7}],9:[function(require,module,exports){
 /*auto-generated*/
 var modules = {};
-modules['ui-clues'] = require('./clues/clues.js');
+modules['ui-clues'] = require('./clues/clues.js');modules['ui-hero'] = require('./hero/hero.js');
 
 module.exports = modules;
 
-},{"./clues/clues.js":6}],8:[function(require,module,exports){
-module.exports={"v":3,"t":[{"t":7,"e":"h1","f":["Yarr"]}," ",{"t":7,"e":"ui-clues"}]}
-},{}],9:[function(require,module,exports){
+},{"./clues/clues.js":6,"./hero/hero.js":8}],10:[function(require,module,exports){
+module.exports={"v":3,"t":[{"t":7,"e":"ui-hero"}," ",{"t":7,"e":"ui-clues"}]}
+},{}],11:[function(require,module,exports){
 var Ractive = require('ractive');
 Ractive.components = require('../module');
 
@@ -16777,7 +16795,7 @@ module.exports = function() {
 
 };
 
-},{"../module":7,"./main.html":8,"ractive":3}]},{},[1])
+},{"../module":9,"./main.html":10,"ractive":3}]},{},[1])
 
 
 //# sourceMappingURL=app.js.map

@@ -1,0 +1,21 @@
+/**
+ * @module:   hero
+ * @js:       ./source/js/module/hero/hero.js
+ * @html:     ./source/js/module/hero/hero.html
+ */
+
+
+@include module("hero") {
+
+    padding: 40px;
+    position: relative;
+    background-color: #F5C660;
+
+    .hero__logo {
+        max-width: 100%;
+        width: 400px;
+        height: 200px;
+        margin: 0 auto;
+        background: url("../img/henhunt.svg") no-repeat 0 0;
+    }
+}
