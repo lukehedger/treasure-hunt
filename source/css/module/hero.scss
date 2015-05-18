@@ -6,10 +6,9 @@
 
 
 @include module("hero") {
-
     padding: 40px;
     position: relative;
-    background-color: #F5C660;
+    background-color: $color-yellow;
 
     .hero__logo {
         max-width: 100%;

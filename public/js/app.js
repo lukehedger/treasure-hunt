@@ -27,7 +27,7 @@ domready(function() {
 
 });
 
-},{"./view/main.js":14,"domready":2}],2:[function(require,module,exports){
+},{"./view/main.js":17,"domready":2}],2:[function(require,module,exports){
 /*!
   * domready (c) Dustin Diaz 2014 - License MIT
   */
@@ -60,6 +60,68 @@ domready(function() {
 });
 
 },{}],3:[function(require,module,exports){
+
+
+    /**
+     * Returns "nth" of number (1 = "st", 2 = "nd", 3 = "rd", 4..10 = "th", ...)
+     */
+    function nth(i) {
+        var t = (i % 100);
+        if (t >= 10 && t <= 20) {
+            return 'th';
+        }
+        switch(i % 10) {
+            case 1:
+                return 'st';
+            case 2:
+                return 'nd';
+            case 3:
+                return 'rd';
+            default:
+                return 'th';
+        }
+    }
+
+    module.exports = nth;
+
+
+
+},{}],4:[function(require,module,exports){
+var toInt = require('./toInt');
+var nth = require('./nth');
+
+    /**
+     * converts number into ordinal form (1st, 2nd, 3rd, 4th, ...)
+     */
+    function ordinal(n){
+       n = toInt(n);
+       return n + nth(n);
+    }
+
+    module.exports = ordinal;
+
+
+
+},{"./nth":3,"./toInt":5}],5:[function(require,module,exports){
+
+
+    /**
+     * "Convert" value into an 32-bit integer.
+     * Works like `Math.floor` if val > 0 and `Math.ceil` if val < 0.
+     * IMPORTANT: val will wrap at 2^31 and -2^31.
+     * Perf tests: http://jsperf.com/vs-vs-parseint-bitwise-operators/7
+     */
+    function toInt(val){
+        // we do not use lang/toNumber because of perf and also because it
+        // doesn't break the functionality
+        return ~~val;
+    }
+
+    module.exports = toInt;
+
+
+
+},{}],6:[function(require,module,exports){
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
 	typeof define === 'function' && define.amd ? define(factory) :
@@ -105,7 +167,7 @@ domready(function() {
 	return ractive_transitions_slide;
 
 }));
-},{}],4:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 /*
 	Ractive.js v0.7.3
 	Sat Apr 25 2015 13:52:38 GMT-0400 (EDT) - commit da40f81c660ba2f09c45a09a9c20fdd34ee36d80
@@ -16726,7 +16788,7 @@ domready(function() {
 }));
 //# sourceMappingURL=ractive.js.map
 
-},{}],5:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 var Ractive = require('ractive');
 
 module.exports = Ractive.extend({
@@ -16747,9 +16809,9 @@ module.exports = Ractive.extend({
 
 });
 
-},{"ractive":4}],6:[function(require,module,exports){
-module.exports={"v":3,"t":[{"t":7,"e":"div","a":{"class":"clues section"},"f":[{"t":7,"e":"h2","f":["The Clues"]}," ",{"t":7,"e":"hr"}," ",{"t":7,"e":"div","a":{"class":"clues__list"},"f":[{"t":4,"f":[{"t":7,"e":"div","a":{"class":"clue"},"f":[{"t":7,"e":"h3","a":{"class":"clue__title"},"f":[{"t":2,"x":{"r":["i"],"s":"_0+1"}}," - ",{"t":2,"r":"clue"}]}," ",{"t":4,"f":[],"i":"l","r":"letters"}," ",{"t":4,"f":[{"t":7,"e":"div","a":{"class":"clue__hint"},"f":[{"t":2,"r":"hint"}]}],"r":"hintsOn"}]}],"i":"i","r":"clues"}]}]}]}
-},{}],7:[function(require,module,exports){
+},{"ractive":7}],9:[function(require,module,exports){
+module.exports={"v":3,"t":[{"t":7,"e":"div","a":{"class":"clues section"},"f":[{"t":7,"e":"h2","f":["The Clues"]}," ",{"t":7,"e":"hr"}," ",{"t":7,"e":"div","a":{"class":"clues__list"},"f":[{"t":4,"f":[{"t":7,"e":"div","a":{"class":"clue"},"f":[{"t":7,"e":"h3","a":{"class":"clue__title"},"f":[{"t":2,"x":{"r":["i"],"s":"_0+1"}}," - ",{"t":2,"r":"clue"}]}," ",{"t":7,"e":"h4","a":{"class":"clue__letter-number"},"f":[{"t":2,"x":{"r":["ordinal","letter"],"s":"_0(_1)"}}]}," ",{"t":7,"e":"div","a":{"class":"clue__inputs"},"f":[{"t":4,"f":[{"t":7,"e":"input","a":{"class":"clue__input","data-clue-id":[{"t":2,"r":"i"}],"data-letter-id":[{"t":2,"r":"l"}],"type":"text","maxlength":"1","tabindex":[{"t":2,"x":{"r":["."],"s":"_0==\"/\"?\"-1\":\"1\""}}],"placeholder":[{"t":2,"x":{"r":["."],"s":"_0==\"/\"?_0:\"\""}}]},"m":[{"t":2,"x":{"r":["."],"s":"_0==\"/\"?\"readonly\":\"\""}}],"v":{"keyup":"keyUp"}}],"i":"l","r":"letters"}]}," ",{"t":4,"f":[{"t":7,"e":"div","a":{"class":"clue__hint"},"f":[{"t":2,"r":"hint"}]}],"r":"hintsOn"}]}],"i":"i","r":"clues"}]}]}]}
+},{}],10:[function(require,module,exports){
 /**
  * @module:   clues
  * @scss:     ./source/css/module/clues.scss
@@ -16759,36 +16821,78 @@ module.exports={"v":3,"t":[{"t":7,"e":"div","a":{"class":"clues section"},"f":[{
 
 var Module = require('../abstract-module');
 
-module.exports = Module.extend({
+var ordinal = require('mout/number/ordinal')
 
-  template: require('./clues.html'),
+    module.exports = Module.extend({
 
-  data: function () {
-    return {
-        hintsOn: false,
-        clues: [
-          {
-              clue: "this is a clue",
-              answer: "this is an answer",
-              letters: function() {
-                //  do something here? 
+    template: require('./clues.html'),
+
+    data: function () {
+        return {
+            hintsOn: false,
+            ordinal: function (n) {
+                return ordinal(n);
+            },
+            clues: [
+              {
+                  clue: "An easy one to start - take the first letter from a nearby alliterative station. (Any other alliterative stations you can think of?)",
+                  letter: 1,
+                  answer: "Charing Cross",
+                  hint: "It's so close! Alliterative means the same letter at the start of each word."
               },
-              hint: "this is a hint"
-          },
-          {
-              clue: "this is another clue",
-              answer: "this is another answer",
-              hint: "this is another hint"
-          }
-        ]
-    };
-  }
+              {
+                  clue: "Down on Northumberland Street you’ll find someone who might be able to help (at least with this clue) - although he’s a bit far from his usual floury haunt.",
+                  letter: 4,
+                  answer: "Sherlock Holmes",
+                  hint: "Floury as in flour, used by Bakers - and consulting detectives"
+              }
+            ]
+        }
+    },
+
+    oninit: function () {
+
+        // generate array of letters from answer
+        var clues = this.get("clues");
+        for (key in clues) {
+            var ans = clues[key].answer;
+            this.set(`clues[${key}].letters`, this.generateLetterArray(ans));
+        }
+    },
+
+    onrender: function () {
+
+        this.on("keyUp", this.onLetterInput.bind(this));
+    },
+
+    generateLetterArray: function(ans) {
+
+        var arr = ans.toLowerCase().replace(/\W/g, "/").split("");
+        return arr;
+    },
+
+    onLetterInput: function (e) {
+
+        var input = e.node,
+            key = e.original.keyCode;
+        if (input.value.length == input.maxLength) {
+            var next = input.nextElementSibling;
+            if (next && next.tagName.toLowerCase() == "input" && !next.readOnly) {
+                next.focus();
+            }
+        } else if (input.value.length == 0 && key == 8 || key == 46) {
+            var prev = input.previousSibling;
+            if (prev && prev.tagName.toLowerCase() == "input" && !prev.readOnly) {
+                prev.focus();
+            }
+        }
+    }
 
 });
 
-},{"../abstract-module":5,"./clues.html":6}],8:[function(require,module,exports){
+},{"../abstract-module":8,"./clues.html":9,"mout/number/ordinal":4}],11:[function(require,module,exports){
 module.exports={"v":3,"t":[{"t":7,"e":"div","a":{"class":"hero"},"f":[{"t":7,"e":"div","a":{"class":"hero__logo"}}]}]}
-},{}],9:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 /**
  * @module:   hero
  * @scss:     ./source/css/module/hero.scss
@@ -16804,16 +16908,16 @@ module.exports = Module.extend({
 
 });
 
-},{"../abstract-module":5,"./hero.html":8}],10:[function(require,module,exports){
+},{"../abstract-module":8,"./hero.html":11}],13:[function(require,module,exports){
 /*auto-generated*/
 var modules = {};
 modules['ui-clues'] = require('./clues/clues.js');modules['ui-hero'] = require('./hero/hero.js');modules['ui-intro'] = require('./intro/intro.js');
 
 module.exports = modules;
 
-},{"./clues/clues.js":7,"./hero/hero.js":9,"./intro/intro.js":12}],11:[function(require,module,exports){
+},{"./clues/clues.js":10,"./hero/hero.js":12,"./intro/intro.js":15}],14:[function(require,module,exports){
 module.exports={"v":3,"t":[{"t":7,"e":"div","a":{"class":"intro section"},"t2":"slide","f":[{"t":7,"e":"div","a":{"class":["intro__toggle",{"t":2,"x":{"r":["visible"],"s":"_0?\"--on\":\"--off\""}}]},"v":{"click":"toggleIntro"},"f":["×"]}," ",{"t":4,"f":[{"t":7,"e":"div","a":{"class":"intro__blurb"},"t0":{"n":"slide","a":[{"easing":"ease-in-out"}]},"f":[{"t":7,"e":"h2","f":["The Hunt"]}," ",{"t":7,"e":"hr"}," ",{"t":7,"e":"p","f":["There are 15 clues: the solution to each clue will give you a letter. These letters will form the resting place of the legendary Hen Hunt treasure. Read all the clues first to see if you have any ideas and then plot your route carefully - the clues are only in order of the letters they yield, not geographical or chronological. The fastest team will win a prize. There also be prizes for the best treasure! And to prove you haven’t just Googled the solution get a team photo at each location (for prosperity as well 😉)."]}," ",{"t":7,"e":"p","f":["Text the Treasure Master for hints/solutions."]}]}],"r":"visible"}]}]}
-},{}],12:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 /**
  * @module:   intro
  * @scss:     ./source/css/module/intro.scss
@@ -16846,9 +16950,9 @@ module.exports = Module.extend({
 
 });
 
-},{"../abstract-module":5,"./intro.html":11,"ractive-transitions-slide":3}],13:[function(require,module,exports){
+},{"../abstract-module":8,"./intro.html":14,"ractive-transitions-slide":6}],16:[function(require,module,exports){
 module.exports={"v":3,"t":[{"t":7,"e":"ui-hero"}," ",{"t":7,"e":"ui-intro"}," ",{"t":7,"e":"ui-clues"}]}
-},{}],14:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 var Ractive = require('ractive');
 Ractive.components = require('../module');
 
@@ -16876,7 +16980,7 @@ module.exports = function() {
 
 };
 
-},{"../module":10,"./main.html":13,"ractive":4}]},{},[1])
+},{"../module":13,"./main.html":16,"ractive":7}]},{},[1])
 
 
 //# sourceMappingURL=app.js.map

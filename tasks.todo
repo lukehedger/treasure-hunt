@@ -1,16 +1,26 @@
 Build:
-    ✔ intro @done(2015-05-18 15:36) @project(Build)
-    ☐ clues (write up and finish)
-    ☐ inputs: http://stackoverflow.com/questions/15595652/focus-next-input-once-reaching-maxlength-value
+    ☐ change "/" input to a different element
+    ☐ highlight required letter
+    ☐ change to green when letter correct
+
+    ☐ local storage
     ☐ treasure
+    ☐ clues (write up and finish)
+    ☐ hints?
     ☐ print styles: https://github.com/inuitcss/trumps.print
+    ☐ divshot
+
+Sblocks:
+    ☐ explore inuit/itcss
     ☐ lost grid system: https://github.com/corysimmons/lost-sass-gulp/blob/master/gulpfile.js / https://github.com/corysimmons/lost-sass-gulp/blob/master/package.json
+    ☐ or... susy http://susy.oddbird.net/
 
 
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
 
+    ✔ inputs: move to next on keyup and input.value.length == input.maxlength @done(2015-05-18 17:47) @project(Build)
+    ✔ intro @done(2015-05-18 15:36) @project(Build)
     ✔ fonts @done(2015-05-12 17:57) @project(Build)
     ✔ svg logo @done(2015-05-12 17:55) @project(Build)
     ✔ header @done(2015-05-12 17:57) @project(Build)
-    ✘ explore inuit/itcss @cancelled(2015-05-12 17:46) @project(Build)

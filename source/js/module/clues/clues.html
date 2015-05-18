@@ -14,11 +14,13 @@
 
         <div class="clue">
             <h3 class="clue__title">{{i+1}} - {{clue}}</h3>
+            <h4 class="clue__letter-number">{{ordinal(letter)}}</h4>
 
-            <!-- TODO: how to split {{solution}} into letters - in the js? -->
-            {{#letters:l}}
-            <!-- <input class="clue__input" data-clue-id="{{i}}" data-letter-id="{{l}}" type="text" /> -->
-            {{/}}
+            <div class="clue__inputs">
+                {{#letters:l}}
+                <input class="clue__input" data-clue-id="{{i}}" data-letter-id="{{l}}" type="text" maxlength="1" {{. == '/' ? 'readonly' : ''}} tabindex={{. == '/' ? '-1' : '1'}} placeholder="{{. == '/' ? . : ''}}" on-keyup="keyUp" />
+                {{/}}
+            </div>
 
             {{#hintsOn}}
             <div class="clue__hint">{{hint}}</div>

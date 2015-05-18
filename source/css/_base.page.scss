@@ -1,11 +1,12 @@
 html, body {
   width: 100%;
   min-height: 100%;
-  background-color: #FAF2D9;
+  background-color: $color-cloth;
   font-family: 'Old Standard TT', serif;
 }
 
 .section {
+    width: 80%;
     margin: 0 auto;
     padding-top: 40px;
 }

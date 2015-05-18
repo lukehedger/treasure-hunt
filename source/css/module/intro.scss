@@ -7,7 +7,7 @@
 
 @include module("intro") {
     min-height: 50px;
-    border-bottom: 1px dashed #000;
+    border-bottom: 1px dashed $color-grey;
     position: relative;
 
     .intro__toggle {
