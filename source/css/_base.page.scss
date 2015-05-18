@@ -4,3 +4,21 @@ html, body {
   background-color: #FAF2D9;
   font-family: 'Old Standard TT', serif;
 }
+
+.section {
+    margin: 0 auto;
+    padding-top: 40px;
+}
+
+h2 {
+    margin: 5px;
+    text-align: center;
+}
+
+hr {
+    width: 80px;
+    height: 1px;
+    margin: 0 auto 40px;
+    background-color: black;
+    border: 0;
+}

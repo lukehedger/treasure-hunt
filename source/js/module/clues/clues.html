@@ -4,7 +4,7 @@
   @js:       ./source/js/module/clues/clues.js
 -->
 
-<div class="clues">
+<div class="clues section">
     <h2>The Clues</h2>
     <hr>
 
@@ -16,9 +16,9 @@
             <h3 class="clue__title">{{i+1}} - {{clue}}</h3>
 
             <!-- TODO: how to split {{solution}} into letters - in the js? -->
-            <!-- {{#letters:l}}
-            <input class="clue__input" data-clue-id="{{i}}" data-letter-id="{{l}}" type="text" />
-            {{/}} -->
+            {{#letters:l}}
+            <!-- <input class="clue__input" data-clue-id="{{i}}" data-letter-id="{{l}}" type="text" /> -->
+            {{/}}
 
             {{#hintsOn}}
             <div class="clue__hint">{{hint}}</div>

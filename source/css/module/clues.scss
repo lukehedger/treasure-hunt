@@ -8,23 +8,9 @@
 @include module("clues") {
 
     width: 80%;
-    margin: 40px auto 0;
-
-    h2 {
-        margin: 5px;
-        text-align: center;
-    }
-
-    hr {
-        width: 80px;
-        height: 1px;
-        margin: 0 auto;
-        background-color: black;
-        border: 0;
-    }
 
     .clues__list {
-        margin: 40px auto;
+        margin: 0 auto 40px;
     }
 
 }

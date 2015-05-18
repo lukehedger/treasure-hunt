@@ -1,7 +1,16 @@
 Build:
-    ☐ explore inuit
-    ☐ clues
-    ☐ fonts
-    ☐ svg logo
-    ☐ header
-    ☐ print styles
+    ✔ intro @done(2015-05-18 15:36) @project(Build)
+    ☐ clues (write up and finish)
+    ☐ inputs: http://stackoverflow.com/questions/15595652/focus-next-input-once-reaching-maxlength-value
+    ☐ treasure
+    ☐ print styles: https://github.com/inuitcss/trumps.print
+    ☐ lost grid system: https://github.com/corysimmons/lost-sass-gulp/blob/master/gulpfile.js / https://github.com/corysimmons/lost-sass-gulp/blob/master/package.json
+
+
+＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+Archive:
+
+    ✔ fonts @done(2015-05-12 17:57) @project(Build)
+    ✔ svg logo @done(2015-05-12 17:55) @project(Build)
+    ✔ header @done(2015-05-12 17:57) @project(Build)
+    ✘ explore inuit/itcss @cancelled(2015-05-12 17:46) @project(Build)

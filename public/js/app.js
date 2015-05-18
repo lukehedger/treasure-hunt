@@ -27,7 +27,7 @@ domready(function() {
 
 });
 
-},{"./view/main.js":11,"domready":2}],2:[function(require,module,exports){
+},{"./view/main.js":14,"domready":2}],2:[function(require,module,exports){
 /*!
   * domready (c) Dustin Diaz 2014 - License MIT
   */
@@ -60,6 +60,52 @@ domready(function() {
 });
 
 },{}],3:[function(require,module,exports){
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+	typeof define === 'function' && define.amd ? define(factory) :
+	global.Ractive.transitions.slide = factory()
+}(this, function () { 'use strict';
+
+	var ractive_transitions_slide = slide;
+	var DEFAULTS = {
+		duration: 300,
+		easing: "easeInOut"
+	};
+
+	var PROPS = ["height", "borderTopWidth", "borderBottomWidth", "paddingTop", "paddingBottom", "marginTop", "marginBottom"];
+
+	var COLLAPSED = {
+		height: 0,
+		borderTopWidth: 0,
+		borderBottomWidth: 0,
+		paddingTop: 0,
+		paddingBottom: 0,
+		marginTop: 0,
+		marginBottom: 0
+	};
+	function slide(t, params) {
+		var targetStyle;
+
+		params = t.processParams(params, DEFAULTS);
+
+		if (t.isIntro) {
+			targetStyle = t.getStyle(PROPS);
+			t.setStyle(COLLAPSED);
+		} else {
+			// make style explicit, so we're not transitioning to 'auto'
+			t.setStyle(t.getStyle(PROPS));
+			targetStyle = COLLAPSED;
+		}
+
+		t.setStyle("overflowY", "hidden");
+
+		t.animateStyle(targetStyle, params).then(t.complete);
+	}
+
+	return ractive_transitions_slide;
+
+}));
+},{}],4:[function(require,module,exports){
 /*
 	Ractive.js v0.7.3
 	Sat Apr 25 2015 13:52:38 GMT-0400 (EDT) - commit da40f81c660ba2f09c45a09a9c20fdd34ee36d80
@@ -16680,7 +16726,7 @@ domready(function() {
 }));
 //# sourceMappingURL=ractive.js.map
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 var Ractive = require('ractive');
 
 module.exports = Ractive.extend({
@@ -16701,9 +16747,9 @@ module.exports = Ractive.extend({
 
 });
 
-},{"ractive":3}],5:[function(require,module,exports){
-module.exports={"v":3,"t":[{"t":7,"e":"div","a":{"class":"clues"},"f":[{"t":7,"e":"h2","f":["The Clues"]}," ",{"t":7,"e":"hr"}," ",{"t":7,"e":"div","a":{"class":"clues__list"},"f":[{"t":4,"f":[{"t":7,"e":"div","a":{"class":"clue"},"f":[{"t":7,"e":"h3","a":{"class":"clue__title"},"f":[{"t":2,"x":{"r":["i"],"s":"_0+1"}}," - ",{"t":2,"r":"clue"}]}," ",{"t":4,"f":[{"t":7,"e":"div","a":{"class":"clue__hint"},"f":[{"t":2,"r":"hint"}]}],"r":"hintsOn"}]}],"i":"i","r":"clues"}]}]}]}
-},{}],6:[function(require,module,exports){
+},{"ractive":4}],6:[function(require,module,exports){
+module.exports={"v":3,"t":[{"t":7,"e":"div","a":{"class":"clues section"},"f":[{"t":7,"e":"h2","f":["The Clues"]}," ",{"t":7,"e":"hr"}," ",{"t":7,"e":"div","a":{"class":"clues__list"},"f":[{"t":4,"f":[{"t":7,"e":"div","a":{"class":"clue"},"f":[{"t":7,"e":"h3","a":{"class":"clue__title"},"f":[{"t":2,"x":{"r":["i"],"s":"_0+1"}}," - ",{"t":2,"r":"clue"}]}," ",{"t":4,"f":[],"i":"l","r":"letters"}," ",{"t":4,"f":[{"t":7,"e":"div","a":{"class":"clue__hint"},"f":[{"t":2,"r":"hint"}]}],"r":"hintsOn"}]}],"i":"i","r":"clues"}]}]}]}
+},{}],7:[function(require,module,exports){
 /**
  * @module:   clues
  * @scss:     ./source/css/module/clues.scss
@@ -16740,9 +16786,9 @@ module.exports = Module.extend({
 
 });
 
-},{"../abstract-module":4,"./clues.html":5}],7:[function(require,module,exports){
+},{"../abstract-module":5,"./clues.html":6}],8:[function(require,module,exports){
 module.exports={"v":3,"t":[{"t":7,"e":"div","a":{"class":"hero"},"f":[{"t":7,"e":"div","a":{"class":"hero__logo"}}]}]}
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 /**
  * @module:   hero
  * @scss:     ./source/css/module/hero.scss
@@ -16758,16 +16804,51 @@ module.exports = Module.extend({
 
 });
 
-},{"../abstract-module":4,"./hero.html":7}],9:[function(require,module,exports){
+},{"../abstract-module":5,"./hero.html":8}],10:[function(require,module,exports){
 /*auto-generated*/
 var modules = {};
-modules['ui-clues'] = require('./clues/clues.js');modules['ui-hero'] = require('./hero/hero.js');
+modules['ui-clues'] = require('./clues/clues.js');modules['ui-hero'] = require('./hero/hero.js');modules['ui-intro'] = require('./intro/intro.js');
 
 module.exports = modules;
 
-},{"./clues/clues.js":6,"./hero/hero.js":8}],10:[function(require,module,exports){
-module.exports={"v":3,"t":[{"t":7,"e":"ui-hero"}," ",{"t":7,"e":"ui-clues"}]}
-},{}],11:[function(require,module,exports){
+},{"./clues/clues.js":7,"./hero/hero.js":9,"./intro/intro.js":12}],11:[function(require,module,exports){
+module.exports={"v":3,"t":[{"t":7,"e":"div","a":{"class":"intro section"},"t2":"slide","f":[{"t":7,"e":"div","a":{"class":["intro__toggle",{"t":2,"x":{"r":["visible"],"s":"_0?\"--on\":\"--off\""}}]},"v":{"click":"toggleIntro"},"f":["×"]}," ",{"t":4,"f":[{"t":7,"e":"div","a":{"class":"intro__blurb"},"t0":{"n":"slide","a":[{"easing":"ease-in-out"}]},"f":[{"t":7,"e":"h2","f":["The Hunt"]}," ",{"t":7,"e":"hr"}," ",{"t":7,"e":"p","f":["There are 15 clues: the solution to each clue will give you a letter. These letters will form the resting place of the legendary Hen Hunt treasure. Read all the clues first to see if you have any ideas and then plot your route carefully - the clues are only in order of the letters they yield, not geographical or chronological. The fastest team will win a prize. There also be prizes for the best treasure! And to prove you haven’t just Googled the solution get a team photo at each location (for prosperity as well 😉)."]}," ",{"t":7,"e":"p","f":["Text the Treasure Master for hints/solutions."]}]}],"r":"visible"}]}]}
+},{}],12:[function(require,module,exports){
+/**
+ * @module:   intro
+ * @scss:     ./source/css/module/intro.scss
+ * @html:     ./source/js/module/intro/intro.html
+ */
+
+
+var Module = require('../abstract-module');
+
+module.exports = Module.extend({
+
+  template: require('./intro.html'),
+
+  transitions: {
+      slide: require( 'ractive-transitions-slide' )
+  },
+
+  data: function () {
+      return {
+         visible: true
+      }
+  },
+
+  oninit: function () {
+
+      this.on("toggleIntro", function () {
+          this.toggle("visible");
+      });
+  }
+
+});
+
+},{"../abstract-module":5,"./intro.html":11,"ractive-transitions-slide":3}],13:[function(require,module,exports){
+module.exports={"v":3,"t":[{"t":7,"e":"ui-hero"}," ",{"t":7,"e":"ui-intro"}," ",{"t":7,"e":"ui-clues"}]}
+},{}],14:[function(require,module,exports){
 var Ractive = require('ractive');
 Ractive.components = require('../module');
 
@@ -16795,7 +16876,7 @@ module.exports = function() {
 
 };
 
-},{"../module":9,"./main.html":10,"ractive":3}]},{},[1])
+},{"../module":10,"./main.html":13,"ractive":4}]},{},[1])
 
 
 //# sourceMappingURL=app.js.map
