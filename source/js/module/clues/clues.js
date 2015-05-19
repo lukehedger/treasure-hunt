@@ -9,7 +9,7 @@ var Module = require('../abstract-module');
 
 var ordinal = require('mout/number/ordinal')
 
-    module.exports = Module.extend({
+module.exports = Module.extend({
 
     template: require('./clues.html'),
 
@@ -43,6 +43,9 @@ var ordinal = require('mout/number/ordinal')
         for (key in clues) {
             var ans = clues[key].answer;
             this.set(`clues[${key}].letters`, this.generateLetterArray(ans));
+
+            // unsolved by default
+            this.set(`clues[${key}].solved`, false)
         }
     },
 
@@ -62,6 +65,10 @@ var ordinal = require('mout/number/ordinal')
         var input = e.node,
             key = e.original.keyCode;
 
+        // but is it right?
+        this.checkInput(input);
+
+        // move focus
         if (input.value.length == input.maxLength) {
             var next = input.nextElementSibling;
             if (next && next.tagName.toLowerCase() == "input" && !next.readOnly) {
@@ -73,6 +80,16 @@ var ordinal = require('mout/number/ordinal')
                 prev.focus();
             }
         }
+    },
+
+    checkInput: function (input) {
+        var clueId = input.getAttribute("data-clue-id"),
+            letterId = parseFloat(input.getAttribute("data-letter-id")),
+            clue = this.get(`clues[${clueId}]`);
+
+        if (letterId+1 != clue.letter) return;
+
+        this.set(`clues[${clueId}].solved`, clue.letters[letterId] === input.value ? true : false);
     }
 
 });

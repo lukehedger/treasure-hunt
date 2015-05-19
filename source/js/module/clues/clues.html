@@ -22,7 +22,7 @@
                 {{#if . == '/'}}
                 <span class="clue__space">{{.}}</span>
                 {{else}}
-                <input class="clue__input" data-clue-id="{{i}}" data-letter-id="{{l}}" type="text" maxlength="1" on-keyup="keyUp" />
+                <input class="clue__input{{ solved ? '--correct' : '--incorrect'}}" data-clue-id="{{i}}" data-letter-id="{{l}}" type="text" maxlength="1" on-keyup="keyUp" />
                 {{/if}}
 
                 {{/}}

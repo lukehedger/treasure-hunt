@@ -16810,7 +16810,7 @@ module.exports = Ractive.extend({
 });
 
 },{"ractive":7}],9:[function(require,module,exports){
-module.exports={"v":3,"t":[{"t":7,"e":"div","a":{"class":"clues section"},"f":[{"t":7,"e":"h2","f":["The Clues"]}," ",{"t":7,"e":"hr"}," ",{"t":7,"e":"div","a":{"class":"clues__list"},"f":[{"t":4,"f":[{"t":7,"e":"div","a":{"class":"clue"},"f":[{"t":7,"e":"h3","a":{"class":"clue__title"},"f":[{"t":2,"x":{"r":["i"],"s":"_0+1"}}," - ",{"t":2,"r":"clue"}]}," ",{"t":7,"e":"h4","a":{"class":"clue__letter-number"},"f":[{"t":2,"x":{"r":["ordinal","letter"],"s":"_0(_1)"}}]}," ",{"t":7,"e":"div","a":{"class":"clue__inputs"},"f":[{"t":4,"f":[{"t":4,"f":[{"t":7,"e":"span","a":{"class":"clue__space"},"f":[{"t":2,"r":"."}]}],"n":50,"x":{"r":["."],"s":"_0==\"/\""}},{"t":4,"n":51,"f":[{"t":7,"e":"input","a":{"class":"clue__input","data-clue-id":[{"t":2,"r":"i"}],"data-letter-id":[{"t":2,"r":"l"}],"type":"text","maxlength":"1"},"v":{"keyup":"keyUp"}}],"x":{"r":["."],"s":"_0==\"/\""}}],"i":"l","r":"letters"}]}," ",{"t":4,"f":[{"t":7,"e":"div","a":{"class":"clue__hint"},"f":[{"t":2,"r":"hint"}]}],"r":"hintsOn"}]}],"i":"i","r":"clues"}]}]}]}
+module.exports={"v":3,"t":[{"t":7,"e":"div","a":{"class":"clues section"},"f":[{"t":7,"e":"h2","f":["The Clues"]}," ",{"t":7,"e":"hr"}," ",{"t":7,"e":"div","a":{"class":"clues__list"},"f":[{"t":4,"f":[{"t":7,"e":"div","a":{"class":"clue"},"f":[{"t":7,"e":"h3","a":{"class":"clue__title"},"f":[{"t":2,"x":{"r":["i"],"s":"_0+1"}}," - ",{"t":2,"r":"clue"}]}," ",{"t":7,"e":"h4","a":{"class":"clue__letter-number"},"f":[{"t":2,"x":{"r":["ordinal","letter"],"s":"_0(_1)"}}]}," ",{"t":7,"e":"div","a":{"class":"clue__inputs"},"f":[{"t":4,"f":[{"t":4,"f":[{"t":7,"e":"span","a":{"class":"clue__space"},"f":[{"t":2,"r":"."}]}],"n":50,"x":{"r":["."],"s":"_0==\"/\""}},{"t":4,"n":51,"f":[{"t":7,"e":"input","a":{"class":["clue__input",{"t":2,"x":{"r":["solved"],"s":"_0?\"--correct\":\"--incorrect\""}}],"data-clue-id":[{"t":2,"r":"i"}],"data-letter-id":[{"t":2,"r":"l"}],"type":"text","maxlength":"1"},"v":{"keyup":"keyUp"}}],"x":{"r":["."],"s":"_0==\"/\""}}],"i":"l","r":"letters"}]}," ",{"t":4,"f":[{"t":7,"e":"div","a":{"class":"clue__hint"},"f":[{"t":2,"r":"hint"}]}],"r":"hintsOn"}]}],"i":"i","r":"clues"}]}]}]}
 },{}],10:[function(require,module,exports){
 /**
  * @module:   clues
@@ -16823,7 +16823,7 @@ var Module = require('../abstract-module');
 
 var ordinal = require('mout/number/ordinal')
 
-    module.exports = Module.extend({
+module.exports = Module.extend({
 
     template: require('./clues.html'),
 
@@ -16857,6 +16857,9 @@ var ordinal = require('mout/number/ordinal')
         for (key in clues) {
             var ans = clues[key].answer;
             this.set(`clues[${key}].letters`, this.generateLetterArray(ans));
+
+            // unsolved by default
+            this.set(`clues[${key}].solved`, false)
         }
     },
 
@@ -16876,6 +16879,10 @@ var ordinal = require('mout/number/ordinal')
         var input = e.node,
             key = e.original.keyCode;
 
+        // but is it right?
+        this.checkInput(input);
+
+        // move focus
         if (input.value.length == input.maxLength) {
             var next = input.nextElementSibling;
             if (next && next.tagName.toLowerCase() == "input" && !next.readOnly) {
@@ -16887,6 +16894,16 @@ var ordinal = require('mout/number/ordinal')
                 prev.focus();
             }
         }
+    },
+
+    checkInput: function (input) {
+        var clueId = input.getAttribute("data-clue-id"),
+            letterId = parseFloat(input.getAttribute("data-letter-id")),
+            clue = this.get(`clues[${clueId}]`);
+
+        if (letterId+1 != clue.letter) return;
+
+        this.set(`clues[${clueId}].solved`, clue.letters[letterId] === input.value ? true : false);
     }
 
 });

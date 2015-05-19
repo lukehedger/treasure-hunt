@@ -31,7 +31,6 @@
         &:after {
             content: " letter";
         }
-
     }
 
     .clue__inputs {
@@ -49,6 +48,21 @@
         text-align: center;
         text-transform: uppercase;
         outline: none;
+        transition: color 0.2s;
+
+        &:focus {
+            background-color: lighten($color-yellow, 20%);
+        }
+
+        &--correct {
+            @extend .clue__input;
+            color: $color-green;
+        }
+
+        &--incorrect {
+            @extend .clue__input;
+            color: $color-red;
+        }
     }
 
     .clue__space {
@@ -58,5 +72,4 @@
         display: inline-block;
         text-align: center;
     }
-
 }
