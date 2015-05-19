@@ -61,6 +61,7 @@ var ordinal = require('mout/number/ordinal')
 
         var input = e.node,
             key = e.original.keyCode;
+
         if (input.value.length == input.maxLength) {
             var next = input.nextElementSibling;
             if (next && next.tagName.toLowerCase() == "input" && !next.readOnly) {

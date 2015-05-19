@@ -1,10 +1,9 @@
 Build:
-    ☐ change "/" input to a different element
     ☐ highlight required letter
     ☐ change to green when letter correct
 
-    ☐ local storage
-    ☐ treasure
+    ☐ local storage to save input values (only correct?)
+    ☐ treasure list section (w/checkboxes)
     ☐ clues (write up and finish)
     ☐ hints?
     ☐ print styles: https://github.com/inuitcss/trumps.print

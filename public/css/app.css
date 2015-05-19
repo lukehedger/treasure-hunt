@@ -847,6 +847,13 @@ hr {
   text-transform: uppercase;
   outline: none; }
 
+.clues .clue__space {
+  width: 40px;
+  height: 60px;
+  font-size: 40px;
+  display: inline-block;
+  text-align: center; }
+
 /**
  * @module:   hero
  * @js:       ./source/js/module/hero/hero.js
