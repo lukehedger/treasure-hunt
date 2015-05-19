@@ -1,0 +1,6 @@
+{
+  "name": "treasure-hunt",
+  "root": "public",
+  "clean_urls": true,
+  "error_page": "error.html"
+}

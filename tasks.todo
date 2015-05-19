@@ -1,18 +1,19 @@
 Build:
-    ☐ print styles: https://github.com/inuitcss/trumps.print
-    ☐ divshot
     ☐ finish clues!
+    ☐ print styles: https://github.com/inuitcss/trumps.print
 
 Sblocks:
     ☐ explore inuit/itcss
     ☐ lost grid system: https://github.com/corysimmons/lost-sass-gulp/blob/master/gulpfile.js / https://github.com/corysimmons/lost-sass-gulp/blob/master/package.json
     ☐ or... susy http://susy.oddbird.net/
     ☐ es6
+    ☐ page.js router
 
 
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
 
+    ✔ divshot @done(2015-05-19 14:06) @project(Build)
     ✔ clues @done(2015-05-19 12:56) @project(Build)
     ✔ inputs: move to next on keyup and input.value.length == input.maxlength @done(2015-05-18 17:47) @project(Build)
     ✔ intro @done(2015-05-18 15:36) @project(Build)
