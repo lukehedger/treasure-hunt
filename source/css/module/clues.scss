@@ -17,6 +17,7 @@
 
     .clue__title {
         margin: 0;
+        font-weight: normal;
     }
 
     .clue__letter-number {
@@ -38,12 +39,12 @@
     }
 
     .clue__input {
-        width: 40px;
-        height: 60px;
+        width: 36px;
+        height: 56px;
         border: 0;
         border-bottom: 1px solid $color-grey;
         margin-right: 3px;
-        font-size: 40px;
+        font-size: 36px;
         background: none;
         display: inline-block;
         text-align: center;
@@ -76,9 +77,9 @@
     }
 
     .clue__space {
-        width: 40px;
-        height: 60px;
-        font-size: 40px;
+        width: 36px;
+        height: 56px;
+        font-size: 36px;
         display: inline-block;
         text-align: center;
     }
