@@ -840,6 +840,7 @@ hr {
   height: 60px;
   border: 0;
   border-bottom: 1px solid #343433;
+  margin-right: 3px;
   font-size: 40px;
   background: none;
   display: inline-block;
@@ -847,6 +848,8 @@ hr {
   text-transform: uppercase;
   outline: none;
   transition: color 0.2s; }
+  .clues .clue__input:last-of-type, .clues .clue__input--correct:last-of-type, .clues .clue__input--incorrect:last-of-type {
+    margin-right: 0; }
   .clues .clue__input:focus, .clues .clue__input--correct:focus, .clues .clue__input--incorrect:focus {
     background-color: #fbe8c0; }
   .clues .clue__input--correct {

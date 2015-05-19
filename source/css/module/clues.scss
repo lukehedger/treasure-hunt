@@ -42,6 +42,7 @@
         height: 60px;
         border: 0;
         border-bottom: 1px solid $color-grey;
+        margin-right: 3px;
         font-size: 40px;
         background: none;
         display: inline-block;
@@ -49,6 +50,10 @@
         text-transform: uppercase;
         outline: none;
         transition: color 0.2s;
+
+        &:last-of-type {
+            margin-right: 0;
+        }
 
         &:focus {
             background-color: lighten($color-yellow, 20%);
