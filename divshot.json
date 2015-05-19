@@ -1,5 +1,5 @@
 {
-  "name": "treasure-hunt",
+  "name": "henhunt",
   "root": "public",
   "clean_urls": true,
   "error_page": "error.html"
