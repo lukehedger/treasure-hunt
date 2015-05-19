@@ -63,6 +63,11 @@
             @extend .clue__input;
             color: $color-red;
         }
+
+        &.required {
+            font-weight: bold;
+        }
+
     }
 
     .clue__space {

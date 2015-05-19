@@ -27,7 +27,7 @@ domready(function() {
 
 });
 
-},{"./view/main.js":17,"domready":2}],2:[function(require,module,exports){
+},{"./view/main.js":18,"domready":2}],2:[function(require,module,exports){
 /*!
   * domready (c) Dustin Diaz 2014 - License MIT
   */
@@ -16789,6 +16789,96 @@ var nth = require('./nth');
 //# sourceMappingURL=ractive.js.map
 
 },{}],8:[function(require,module,exports){
+module.exports = {
+    clues: [
+        {
+            clue: "An easy one to start - take the first letter from a nearby alliterative station. (Any other alliterative stations you can think of?)",
+            letter: 1,
+            answer: "Charing Cross",
+            hint: "It's so close! Alliterative means the same letter at the start of each word."
+        },
+        {
+            clue: "Down on Northumberland Street you’ll find someone who might be able to help (at least with this clue) - although he’s a bit far from his usual floury haunt.",
+            letter: 4,
+            answer: "Sherlock Holmes",
+            hint: "Floury as in flour, used by Bakers - and consulting detectives"
+        },
+        {
+            clue: "Soho was once the Earl of Leicester’s hunting ground (Soohoo being a hunting call) and you can still see the old boundary markers. But what were they? Find one on Kingly Street, Berwick Street, Rupert Street or Newman Street.",
+            letter: 6,
+            answer: "Blue Posts",
+            hint: ""
+        },
+        {
+            clue: "Near to a holy patch of grass you’ll find a rather inanimate conversation on an Australian street - who is it with?",
+            letter: 7,
+            answer: "Oscar Wilde",
+            hint: ""
+        },
+        {
+            clue: "Time for a treat - on Broadwick Street there’s a shop selling circles with holes for angry settlements.",
+            letter: 9,
+            answer: "Crosstown",
+            hint: ""
+        },
+        {
+            clue: "How many...? Things in a painting @ NPG",
+            letter: 1,
+            answer: "2",
+            hint: ""
+        },
+        {
+            clue: "Some may say this hound/water-fowl cross-breed could be the best of its kind in London. Experts have refuted these claims.",
+            letter: 11,
+            answer: "Dog and Duck",
+            hint: ""
+        },
+        {
+            clue: "Take a little trip to Spain with Bradley (via Hanway Street) and find song number *.",
+            letter: 1,
+            answer: "TODO",
+            hint: ""
+        },
+        {
+            clue: "Wash your hands outside this fabled shop where Lexington meets Beak.",
+            letter: 1,
+            answer: "Aesop",
+            hint: ""
+        },
+        {
+            clue: "What sits atop the Toucan's beak on the pavement of Carlisle Street?",
+            letter: 3,
+            answer: "Guinness",
+            hint: ""
+        },
+        {
+            clue: "The £1m mod has a plaque on Carnaby Street - but what colour is it?",
+            letter: 2,
+            answer: "Green",
+            hint: ""
+        },
+        {
+            clue: "Search Regent Street for a celestial passage",
+            letter: 8,
+            answer: "Man in Moon Passage",
+            hint: ""
+        },
+        {
+            clue: "What happens in Wardour Street stays in Wardour Street - take a gamble and head to number 89. Win the most for a prize!",
+            letter: 6,
+            answer: "Las Vegas",
+            hint: ""
+        },
+        {
+            clue: "TODO",
+            letter: 1,
+            answer: "TODO",
+            hint: ""
+        }
+    ]
+}
+
+},{}],9:[function(require,module,exports){
 var Ractive = require('ractive');
 
 module.exports = Ractive.extend({
@@ -16809,9 +16899,9 @@ module.exports = Ractive.extend({
 
 });
 
-},{"ractive":7}],9:[function(require,module,exports){
-module.exports={"v":3,"t":[{"t":7,"e":"div","a":{"class":"clues section"},"f":[{"t":7,"e":"h2","f":["The Clues"]}," ",{"t":7,"e":"hr"}," ",{"t":7,"e":"div","a":{"class":"clues__list"},"f":[{"t":4,"f":[{"t":7,"e":"div","a":{"class":"clue"},"f":[{"t":7,"e":"h3","a":{"class":"clue__title"},"f":[{"t":2,"x":{"r":["i"],"s":"_0+1"}}," - ",{"t":2,"r":"clue"}]}," ",{"t":7,"e":"h4","a":{"class":"clue__letter-number"},"f":[{"t":2,"x":{"r":["ordinal","letter"],"s":"_0(_1)"}}]}," ",{"t":7,"e":"div","a":{"class":"clue__inputs"},"f":[{"t":4,"f":[{"t":4,"f":[{"t":7,"e":"span","a":{"class":"clue__space"},"f":[{"t":2,"r":"."}]}],"n":50,"x":{"r":["."],"s":"_0==\"/\""}},{"t":4,"n":51,"f":[{"t":7,"e":"input","a":{"class":["clue__input",{"t":2,"x":{"r":["solved"],"s":"_0?\"--correct\":\"--incorrect\""}}],"data-clue-id":[{"t":2,"r":"i"}],"data-letter-id":[{"t":2,"r":"l"}],"type":"text","maxlength":"1"},"v":{"keyup":"keyUp"}}],"x":{"r":["."],"s":"_0==\"/\""}}],"i":"l","r":"letters"}]}," ",{"t":4,"f":[{"t":7,"e":"div","a":{"class":"clue__hint"},"f":[{"t":2,"r":"hint"}]}],"r":"hintsOn"}]}],"i":"i","r":"clues"}]}]}]}
-},{}],10:[function(require,module,exports){
+},{"ractive":7}],10:[function(require,module,exports){
+module.exports={"v":3,"t":[{"t":7,"e":"div","a":{"class":"clues section"},"f":[{"t":7,"e":"h2","f":["The Clues"]}," ",{"t":7,"e":"hr"}," ",{"t":7,"e":"div","a":{"class":"clues__list"},"f":[{"t":4,"f":[{"t":7,"e":"div","a":{"class":"clue"},"f":[{"t":7,"e":"h3","a":{"class":"clue__title"},"f":[{"t":2,"x":{"r":["i"],"s":"_0+1"}}," - ",{"t":2,"r":"clue"}]}," ",{"t":7,"e":"h4","a":{"class":"clue__letter-number"},"f":[{"t":2,"x":{"r":["ordinal","letter"],"s":"_0(_1)"}}]}," ",{"t":7,"e":"div","a":{"class":"clue__inputs"},"f":[{"t":4,"f":[{"t":4,"f":[{"t":7,"e":"span","a":{"class":"clue__space"},"f":[{"t":2,"r":"."}]}],"n":50,"x":{"r":["."],"s":"_0==\"/\""}},{"t":4,"n":51,"f":[{"t":7,"e":"input","a":{"class":["clue__input",{"t":2,"x":{"r":["solved"],"s":"_0?\"--correct\":\"--incorrect\""}}," ",{"t":2,"x":{"r":["l","letter"],"s":"_0+1==_1?\"required\":\"\""}}],"data-clue-id":[{"t":2,"r":"i"}],"data-letter-id":[{"t":2,"r":"l"}],"type":"text","maxlength":"1"},"v":{"keyup":"keyUp"}}],"x":{"r":["."],"s":"_0==\"/\""}}],"i":"l","r":"letters"}]}," ",{"t":4,"f":[{"t":7,"e":"div","a":{"class":"clue__hint"},"f":[{"t":2,"r":"hint"}]}],"r":"hintsOn"}]}],"i":"i","r":"clues"}]}]}]}
+},{}],11:[function(require,module,exports){
 /**
  * @module:   clues
  * @scss:     ./source/css/module/clues.scss
@@ -16821,7 +16911,8 @@ module.exports={"v":3,"t":[{"t":7,"e":"div","a":{"class":"clues section"},"f":[{
 
 var Module = require('../abstract-module');
 
-var ordinal = require('mout/number/ordinal')
+var ordinal = require('mout/number/ordinal');
+var config = require('../../config');
 
 module.exports = Module.extend({
 
@@ -16833,20 +16924,7 @@ module.exports = Module.extend({
             ordinal: function (n) {
                 return ordinal(n);
             },
-            clues: [
-              {
-                  clue: "An easy one to start - take the first letter from a nearby alliterative station. (Any other alliterative stations you can think of?)",
-                  letter: 1,
-                  answer: "Charing Cross",
-                  hint: "It's so close! Alliterative means the same letter at the start of each word."
-              },
-              {
-                  clue: "Down on Northumberland Street you’ll find someone who might be able to help (at least with this clue) - although he’s a bit far from his usual floury haunt.",
-                  letter: 4,
-                  answer: "Sherlock Holmes",
-                  hint: "Floury as in flour, used by Bakers - and consulting detectives"
-              }
-            ]
+            clues: config.clues
         }
     },
 
@@ -16908,9 +16986,9 @@ module.exports = Module.extend({
 
 });
 
-},{"../abstract-module":8,"./clues.html":9,"mout/number/ordinal":4}],11:[function(require,module,exports){
+},{"../../config":8,"../abstract-module":9,"./clues.html":10,"mout/number/ordinal":4}],12:[function(require,module,exports){
 module.exports={"v":3,"t":[{"t":7,"e":"div","a":{"class":"hero"},"f":[{"t":7,"e":"div","a":{"class":"hero__logo"}}]}]}
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 /**
  * @module:   hero
  * @scss:     ./source/css/module/hero.scss
@@ -16926,16 +17004,16 @@ module.exports = Module.extend({
 
 });
 
-},{"../abstract-module":8,"./hero.html":11}],13:[function(require,module,exports){
+},{"../abstract-module":9,"./hero.html":12}],14:[function(require,module,exports){
 /*auto-generated*/
 var modules = {};
 modules['ui-clues'] = require('./clues/clues.js');modules['ui-hero'] = require('./hero/hero.js');modules['ui-intro'] = require('./intro/intro.js');
 
 module.exports = modules;
 
-},{"./clues/clues.js":10,"./hero/hero.js":12,"./intro/intro.js":15}],14:[function(require,module,exports){
-module.exports={"v":3,"t":[{"t":7,"e":"div","a":{"class":"intro section"},"t2":"slide","f":[{"t":7,"e":"div","a":{"class":["intro__toggle",{"t":2,"x":{"r":["visible"],"s":"_0?\"--on\":\"--off\""}}]},"v":{"click":"toggleIntro"},"f":["×"]}," ",{"t":4,"f":[{"t":7,"e":"div","a":{"class":"intro__blurb"},"t0":{"n":"slide","a":[{"easing":"ease-in-out"}]},"f":[{"t":7,"e":"h2","f":["The Hunt"]}," ",{"t":7,"e":"hr"}," ",{"t":7,"e":"p","f":["There are 15 clues: the solution to each clue will give you a letter. These letters will form the resting place of the legendary Hen Hunt treasure. Read all the clues first to see if you have any ideas and then plot your route carefully - the clues are only in order of the letters they yield, not geographical or chronological. The fastest team will win a prize. There also be prizes for the best treasure! And to prove you haven’t just Googled the solution get a team photo at each location (for prosperity as well 😉)."]}," ",{"t":7,"e":"p","f":["Text the Treasure Master for hints/solutions."]}]}],"r":"visible"}]}]}
-},{}],15:[function(require,module,exports){
+},{"./clues/clues.js":11,"./hero/hero.js":13,"./intro/intro.js":16}],15:[function(require,module,exports){
+module.exports={"v":3,"t":[{"t":7,"e":"div","a":{"class":"intro section"},"t2":"slide","f":[{"t":7,"e":"div","a":{"class":["intro__toggle",{"t":2,"x":{"r":["visible"],"s":"_0?\"--on\":\"--off\""}}]},"v":{"click":"toggleIntro"},"f":["×"]}," ",{"t":4,"f":[{"t":7,"e":"div","a":{"class":"intro__blurb"},"t0":{"n":"slide","a":[{"easing":"ease-in-out"}]},"f":[{"t":7,"e":"h2","f":["The Hunt"]}," ",{"t":7,"e":"hr"}," ",{"t":7,"e":"p","f":["There are 15 clues: the solution to each clue will give you a letter. These letters will form the resting place of the legendary Hen Hunt treasure. Read all the clues first to see if you have any ideas and then plot your route carefully - the clues are only in order of the letters they yield, not geographical or chronological. The fastest team will win a prize. And to prove you haven’t just Googled the solution get a team photo at each location (for prosperity as well 😉)."]}," ",{"t":7,"e":"p","f":["Text the Treasure Master for hints/solutions."]}]}],"r":"visible"}]}]}
+},{}],16:[function(require,module,exports){
 /**
  * @module:   intro
  * @scss:     ./source/css/module/intro.scss
@@ -16968,9 +17046,9 @@ module.exports = Module.extend({
 
 });
 
-},{"../abstract-module":8,"./intro.html":14,"ractive-transitions-slide":6}],16:[function(require,module,exports){
+},{"../abstract-module":9,"./intro.html":15,"ractive-transitions-slide":6}],17:[function(require,module,exports){
 module.exports={"v":3,"t":[{"t":7,"e":"ui-hero"}," ",{"t":7,"e":"ui-intro"}," ",{"t":7,"e":"ui-clues"}]}
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 var Ractive = require('ractive');
 Ractive.components = require('../module');
 
@@ -16998,7 +17076,7 @@ module.exports = function() {
 
 };
 
-},{"../module":13,"./main.html":16,"ractive":7}]},{},[1])
+},{"../module":14,"./main.html":17,"ractive":7}]},{},[1])
 
 
 //# sourceMappingURL=app.js.map

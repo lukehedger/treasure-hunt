@@ -7,7 +7,8 @@
 
 var Module = require('../abstract-module');
 
-var ordinal = require('mout/number/ordinal')
+var ordinal = require('mout/number/ordinal');
+var config = require('../../config');
 
 module.exports = Module.extend({
 
@@ -19,20 +20,7 @@ module.exports = Module.extend({
             ordinal: function (n) {
                 return ordinal(n);
             },
-            clues: [
-              {
-                  clue: "An easy one to start - take the first letter from a nearby alliterative station. (Any other alliterative stations you can think of?)",
-                  letter: 1,
-                  answer: "Charing Cross",
-                  hint: "It's so close! Alliterative means the same letter at the start of each word."
-              },
-              {
-                  clue: "Down on Northumberland Street you’ll find someone who might be able to help (at least with this clue) - although he’s a bit far from his usual floury haunt.",
-                  letter: 4,
-                  answer: "Sherlock Holmes",
-                  hint: "Floury as in flour, used by Bakers - and consulting detectives"
-              }
-            ]
+            clues: config.clues
         }
     },
 

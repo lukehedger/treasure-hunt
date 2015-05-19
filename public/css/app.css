@@ -853,6 +853,8 @@ hr {
     color: #B3CC9E; }
   .clues .clue__input--incorrect {
     color: #CD4A32; }
+  .clues .clue__input.required, .clues .required.clue__input--correct, .clues .required.clue__input--incorrect {
+    font-weight: bold; }
 
 .clues .clue__space {
   width: 40px;

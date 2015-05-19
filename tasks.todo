@@ -1,10 +1,7 @@
 Build:
-    ☐ local storage to save input values (only correct?)
-    ☐ treasure list section (w/checkboxes)
-    ☐ clues (write up and finish)
-    ☐ hints?
     ☐ print styles: https://github.com/inuitcss/trumps.print
     ☐ divshot
+    ☐ finish clues!
 
 Sblocks:
     ☐ explore inuit/itcss
@@ -15,6 +12,7 @@ Sblocks:
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
 
+    ✔ clues @done(2015-05-19 12:56) @project(Build)
     ✔ inputs: move to next on keyup and input.value.length == input.maxlength @done(2015-05-18 17:47) @project(Build)
     ✔ intro @done(2015-05-18 15:36) @project(Build)
     ✔ fonts @done(2015-05-12 17:57) @project(Build)
