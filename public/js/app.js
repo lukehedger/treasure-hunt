@@ -16861,19 +16861,19 @@ module.exports = {
             clue: "Search Regent Street for a celestial passage",
             letter: 8,
             answer: "Man in Moon Passage",
-            hint: ""
+            hint: "Look North, it's in the South to the West"
         },
         {
             clue: "What happens in Wardour Street stays in Wardour Street - take a gamble and head to number 89. Win the most for a prize!",
             letter: 6,
             answer: "Las Vegas",
-            hint: ""
+            hint: "Most famous place on Earth to gamble?"
         },
         {
-            clue: "TODO",
-            letter: 1,
-            answer: "TODO",
-            hint: ""
+            clue: "Can you spot a member of the Night's Watch in the Soho Mural?",
+            letter: 4,
+            answer: "John Snow",
+            hint: "Not the newsreader!"
         }
     ]
 }
@@ -17012,7 +17012,7 @@ modules['ui-clues'] = require('./clues/clues.js');modules['ui-hero'] = require('
 module.exports = modules;
 
 },{"./clues/clues.js":11,"./hero/hero.js":13,"./intro/intro.js":16}],15:[function(require,module,exports){
-module.exports={"v":3,"t":[{"t":7,"e":"div","a":{"class":"intro section"},"t2":"slide","f":[{"t":7,"e":"div","a":{"class":["intro__toggle",{"t":2,"x":{"r":["visible"],"s":"_0?\"--on\":\"--off\""}}]},"v":{"click":"toggleIntro"},"f":["×"]}," ",{"t":4,"f":[{"t":7,"e":"div","a":{"class":"intro__blurb"},"t0":{"n":"slide","a":[{"easing":"ease-in-out"}]},"f":[{"t":7,"e":"h2","f":["The Hunt"]}," ",{"t":7,"e":"hr"}," ",{"t":7,"e":"p","f":["There are 15 clues: the solution to each clue will give you a letter. These letters will form the resting place of the legendary Hen Hunt treasure. Read all the clues first to see if you have any ideas and then plot your route carefully - the clues are only in order of the letters they yield, not geographical or chronological. The fastest team will win a prize. And to prove you haven’t just Googled the solution get a team photo at each location (for prosperity as well 😉)."]}," ",{"t":7,"e":"p","f":["Text the Treasure Master for hints/solutions."]}]}],"r":"visible"}]}]}
+module.exports={"v":3,"t":[{"t":7,"e":"div","a":{"class":"intro section"},"t2":"slide","f":[{"t":7,"e":"div","a":{"class":["intro__toggle",{"t":2,"x":{"r":["visible"],"s":"_0?\"--on\":\"--off\""}}]},"v":{"click":"toggleIntro"},"f":["×"]}," ",{"t":4,"f":[{"t":7,"e":"div","a":{"class":"intro__blurb"},"t0":{"n":"slide","a":[{"easing":"ease-in-out"}]},"f":[{"t":7,"e":"h2","f":["The Hunt"]}," ",{"t":7,"e":"hr"}," ",{"t":7,"e":"p","f":["There are 15 clues: the solution to each clue will give you a letter. These letters will form the resting place of the legendary Hen Hunt treasure. Read all the clues first to see if you have any ideas and then plot your route carefully - the clues are only in order of the letters they yield, not geographical or chronological. The fastest team will win a prize. And to prove you haven’t just Googled the solution get a team photo at each location (for prosperity as well 😉)."]}]}],"r":"visible"}]}]}
 },{}],16:[function(require,module,exports){
 /**
  * @module:   intro

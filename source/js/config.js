@@ -70,19 +70,19 @@ module.exports = {
             clue: "Search Regent Street for a celestial passage",
             letter: 8,
             answer: "Man in Moon Passage",
-            hint: ""
+            hint: "Look North, it's in the South to the West"
         },
         {
             clue: "What happens in Wardour Street stays in Wardour Street - take a gamble and head to number 89. Win the most for a prize!",
             letter: 6,
             answer: "Las Vegas",
-            hint: ""
+            hint: "Most famous place on Earth to gamble?"
         },
         {
-            clue: "TODO",
-            letter: 1,
-            answer: "TODO",
-            hint: ""
+            clue: "Can you spot a member of the Night's Watch in the Soho Mural?",
+            letter: 4,
+            answer: "John Snow",
+            hint: "Not the newsreader!"
         }
     ]
 }
