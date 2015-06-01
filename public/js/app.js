@@ -16962,13 +16962,29 @@ module.exports = Module.extend({
         // move focus
         if (input.value.length == input.maxLength) {
             var next = input.nextElementSibling;
-            if (next && next.tagName.toLowerCase() == "input" && !next.readOnly) {
-                next.focus();
+            var nextTag = next ? next.tagName.toLowerCase() : null;
+
+            // input is next
+            if (next && nextTag == "input" && !next.readOnly) {
+                return next.focus();
+            }
+
+            // space is next
+            if (next && nextTag == "span" && next.classList.contains("clue__space")) {
+                return next.nextElementSibling.focus();
             }
         } else if (input.value.length == 0 && key == 8 || key == 46) {
             var prev = input.previousSibling;
-            if (prev && prev.tagName.toLowerCase() == "input" && !prev.readOnly) {
-                prev.focus();
+            var prevTag = prev ? prev.tagName.toLowerCase() : null;
+
+            // input is next
+            if (prev && prevTag == "input" && !prev.readOnly) {
+                return prev.focus();
+            }
+
+            // space is next
+            if (prev && prevTag == "span" && prev.classList.contains("clue__space")) {
+                return prev.previousSibling.focus();
             }
         }
     },
