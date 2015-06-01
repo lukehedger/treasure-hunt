@@ -16,7 +16,6 @@ module.exports = Module.extend({
 
     data: function () {
         return {
-            hintsOn: false,
             ordinal: function (n) {
                 return ordinal(n);
             },

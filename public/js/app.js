@@ -16900,7 +16900,7 @@ module.exports = Ractive.extend({
 });
 
 },{"ractive":7}],10:[function(require,module,exports){
-module.exports={"v":3,"t":[{"t":7,"e":"div","a":{"class":"clues section"},"f":[{"t":7,"e":"h2","f":["The Clues"]}," ",{"t":7,"e":"hr"}," ",{"t":7,"e":"div","a":{"class":"clues__list"},"f":[{"t":4,"f":[{"t":7,"e":"div","a":{"class":"clue"},"f":[{"t":7,"e":"h3","a":{"class":"clue__title"},"f":[{"t":2,"x":{"r":["i"],"s":"_0+1"}}," - ",{"t":2,"r":"clue"}]}," ",{"t":7,"e":"h4","a":{"class":"clue__letter-number"},"f":[{"t":2,"x":{"r":["ordinal","letter"],"s":"_0(_1)"}}]}," ",{"t":7,"e":"div","a":{"class":"clue__inputs"},"f":[{"t":4,"f":[{"t":4,"f":[{"t":7,"e":"span","a":{"class":"clue__space"},"f":[{"t":2,"r":"."}]}],"n":50,"x":{"r":["."],"s":"_0==\"/\""}},{"t":4,"n":51,"f":[{"t":7,"e":"input","a":{"class":["clue__input",{"t":2,"x":{"r":["solved"],"s":"_0?\"--correct\":\"--incorrect\""}}," ",{"t":2,"x":{"r":["l","letter"],"s":"_0+1==_1?\"required\":\"\""}}],"data-clue-id":[{"t":2,"r":"i"}],"data-letter-id":[{"t":2,"r":"l"}],"type":"text","maxlength":"1"},"v":{"keyup":"keyUp"}}],"x":{"r":["."],"s":"_0==\"/\""}}],"i":"l","r":"letters"}]}," ",{"t":4,"f":[{"t":7,"e":"div","a":{"class":"clue__hint"},"f":[{"t":2,"r":"hint"}]}],"r":"hintsOn"}]}],"i":"i","r":"clues"}]}]}]}
+module.exports={"v":3,"t":[{"t":7,"e":"div","a":{"class":"clues section"},"f":[{"t":7,"e":"h2","f":["The Clues"]}," ",{"t":7,"e":"hr"}," ",{"t":7,"e":"div","a":{"class":"clues__list"},"f":[{"t":4,"f":[{"t":7,"e":"div","a":{"class":"clue"},"f":[{"t":7,"e":"h3","a":{"class":"clue__title"},"f":[{"t":2,"x":{"r":["i"],"s":"_0+1"}}," - ",{"t":2,"r":"clue"}]}," ",{"t":7,"e":"h4","a":{"class":"clue__letter-number"},"f":[{"t":2,"x":{"r":["ordinal","letter"],"s":"_0(_1)"}}]}," ",{"t":7,"e":"div","a":{"class":"clue__inputs"},"f":[{"t":4,"f":[{"t":4,"f":[{"t":7,"e":"span","a":{"class":"clue__space"},"f":[{"t":2,"r":"."}]}],"n":50,"x":{"r":["."],"s":"_0==\"/\""}},{"t":4,"n":51,"f":[{"t":7,"e":"input","a":{"class":["clue__input",{"t":2,"x":{"r":["solved"],"s":"_0?\"--correct\":\"--incorrect\""}}," ",{"t":2,"x":{"r":["l","letter"],"s":"_0+1==_1?\"required\":\"\""}}],"data-clue-id":[{"t":2,"r":"i"}],"data-letter-id":[{"t":2,"r":"l"}],"type":"text","maxlength":"1"},"v":{"keyup":"keyUp"}}],"x":{"r":["."],"s":"_0==\"/\""}}],"i":"l","r":"letters"}]}]}],"i":"i","r":"clues"}]}]}]}
 },{}],11:[function(require,module,exports){
 /**
  * @module:   clues
@@ -16920,7 +16920,6 @@ module.exports = Module.extend({
 
     data: function () {
         return {
-            hintsOn: false,
             ordinal: function (n) {
                 return ordinal(n);
             },
@@ -17012,7 +17011,7 @@ modules['ui-clues'] = require('./clues/clues.js');modules['ui-hero'] = require('
 module.exports = modules;
 
 },{"./clues/clues.js":11,"./hero/hero.js":13,"./intro/intro.js":16}],15:[function(require,module,exports){
-module.exports={"v":3,"t":[{"t":7,"e":"div","a":{"class":"intro section"},"t2":"slide","f":[{"t":7,"e":"div","a":{"class":["intro__toggle",{"t":2,"x":{"r":["visible"],"s":"_0?\"--on\":\"--off\""}}]},"v":{"click":"toggleIntro"},"f":["×"]}," ",{"t":4,"f":[{"t":7,"e":"div","a":{"class":"intro__blurb"},"t0":{"n":"slide","a":[{"easing":"ease-in-out"}]},"f":[{"t":7,"e":"h2","f":["The Hunt"]}," ",{"t":7,"e":"hr"}," ",{"t":7,"e":"p","f":["There are 15 clues: the solution to each clue will give you a letter. These letters will form the resting place of the legendary Hen Hunt treasure. Read all the clues first to see if you have any ideas and then plot your route carefully - the clues are only in order of the letters they yield, not geographical or chronological. The fastest team will win a prize. And to prove you haven’t just Googled the solution get a team photo at each location (for prosperity as well 😉)."]}]}],"r":"visible"}]}]}
+module.exports={"v":3,"t":[{"t":7,"e":"div","a":{"class":"intro section"},"t2":"slide","f":[{"t":7,"e":"div","a":{"class":["intro__toggle",{"t":2,"x":{"r":["visible"],"s":"_0?\"--on\":\"--off\""}}]},"v":{"click":"toggleIntro"},"f":["×"]}," ",{"t":4,"f":[{"t":7,"e":"div","a":{"class":"intro__blurb"},"t0":{"n":"slide","a":[{"easing":"ease-in-out"}]},"f":[{"t":7,"e":"h2","f":["The Hunt"]}," ",{"t":7,"e":"hr"}," ",{"t":7,"e":"p","f":["There are 15 clues: the solution to each clue will give you a letter. These letters will form the resting place of the legendary Hen Hunt treasure. Read all the clues first to see if you have any ideas and then plot your route carefully - the clues are only in order of the letters they yield, not geographical or chronological. The fastest team will win a prize. And to prove you haven’t just Googled the solution get a team photo at each location (for prosperity as well 😉)."]}," ",{"t":7,"e":"p","f":["Hints: text \"clue\" and the clue number you need a hint for to ",{"t":7,"e":"a","a":{"href":"+441329801049"},"f":["01329801049"]}," (eg. CLUE 1)"]}]}],"r":"visible"}]}]}
 },{}],16:[function(require,module,exports){
 /**
  * @module:   intro
