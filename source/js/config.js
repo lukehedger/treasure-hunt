@@ -14,7 +14,7 @@ module.exports = {
         },
         {
             clue: "Soho was once the Earl of Leicester’s hunting ground (Soohoo being a hunting call) and you can still see the old boundary markers. But what were they? Find one on Kingly Street, Berwick Street, Rupert Street or Newman Street.",
-            letter: 6,
+            letter: 7,
             answer: "Blue Posts",
             hint: "Good name for a pub"
         },
@@ -43,10 +43,10 @@ module.exports = {
             hint: "Ask Alice"
         },
         {
-            clue: "Take a little trip to Spain with Bradley (via Hanway Street) and find song number *.",
-            letter: 1,
-            answer: "TODO",
-            hint: ""
+            clue: "Take a little trip to Spain with Bradley (via Hanway Street) and find song number 166.",
+            letter: 2,
+            answer: "Whole Lotta Rosie",
+            hint: "The huge jukebox in the corner! How do you spell AC/DC?"
         },
         {
             clue: "Wash your hands outside this fabled shop where Lexington meets Beak.",
