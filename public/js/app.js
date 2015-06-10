@@ -17090,13 +17090,13 @@ module.exports = Module.extend({
             clue = this.get(`clues[${clueId}]`);
 
         // store input
-        this.storeInput(clueId, letterId, input.value);
+        this.storeInput(clueId, letterId, input.value.toLowerCase());
 
         // is key letter?
         if (letterId+1 != clue.letter) return;
 
         // is solved?
-        this.set(`clues[${clueId}].solved`, clue.letters[letterId] === input.value ? true : false);
+        this.set(`clues[${clueId}].solved`, clue.letters[letterId] === input.value.toLowerCase() ? true : false);
     },
 
     storeInput: function (clueId, letterId, value) {

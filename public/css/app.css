@@ -899,7 +899,9 @@ hr {
     right: 10px;
     font-size: 18px;
     cursor: pointer;
-    transition: 0.2s; }
+    transition: 0.2s;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: transparent; }
     .intro .intro__toggle--off {
       -webkit-transform: rotate(45deg);
           -ms-transform: rotate(45deg);
