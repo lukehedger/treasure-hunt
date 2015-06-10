@@ -27,7 +27,7 @@ domready(function() {
 
 });
 
-},{"./view/main.js":18,"domready":2}],2:[function(require,module,exports){
+},{"./view/main.js":21,"domready":2}],2:[function(require,module,exports){
 /*!
   * domready (c) Dustin Diaz 2014 - License MIT
   */
@@ -63,6 +63,31 @@ domready(function() {
 
 
     /**
+     * Array forEach
+     */
+    function forEach(arr, callback, thisObj) {
+        if (arr == null) {
+            return;
+        }
+        var i = -1,
+            len = arr.length;
+        while (++i < len) {
+            // we iterate over sparse items since there is no way to make it
+            // work properly on IE 7-8. see #64
+            if ( callback.call(thisObj, arr[i], i, arr) === false ) {
+                break;
+            }
+        }
+    }
+
+    module.exports = forEach;
+
+
+
+},{}],4:[function(require,module,exports){
+
+
+    /**
      * Returns "nth" of number (1 = "st", 2 = "nd", 3 = "rd", 4..10 = "th", ...)
      */
     function nth(i) {
@@ -86,7 +111,7 @@ domready(function() {
 
 
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 var toInt = require('./toInt');
 var nth = require('./nth');
 
@@ -102,7 +127,7 @@ var nth = require('./nth');
 
 
 
-},{"./nth":3,"./toInt":5}],5:[function(require,module,exports){
+},{"./nth":4,"./toInt":6}],6:[function(require,module,exports){
 
 
     /**
@@ -121,7 +146,47 @@ var nth = require('./nth');
 
 
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
+var forEach = require('../array/forEach');
+
+    /**
+     * Create nested object if non-existent
+     */
+    function namespace(obj, path){
+        if (!path) return obj;
+        forEach(path.split('.'), function(key){
+            if (!obj[key]) {
+                obj[key] = {};
+            }
+            obj = obj[key];
+        });
+        return obj;
+    }
+
+    module.exports = namespace;
+
+
+
+},{"../array/forEach":3}],8:[function(require,module,exports){
+var namespace = require('./namespace');
+
+    /**
+     * set "nested" object property
+     */
+    function set(obj, prop, val){
+        var parts = (/^(.+)\.(.+)$/).exec(prop);
+        if (parts){
+            namespace(obj, parts[1])[parts[2]] = val;
+        } else {
+            obj[prop] = val;
+        }
+    }
+
+    module.exports = set;
+
+
+
+},{"./namespace":7}],9:[function(require,module,exports){
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
 	typeof define === 'function' && define.amd ? define(factory) :
@@ -167,7 +232,7 @@ var nth = require('./nth');
 	return ractive_transitions_slide;
 
 }));
-},{}],7:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 /*
 	Ractive.js v0.7.3
 	Sat Apr 25 2015 13:52:38 GMT-0400 (EDT) - commit da40f81c660ba2f09c45a09a9c20fdd34ee36d80
@@ -16788,11 +16853,12 @@ var nth = require('./nth');
 }));
 //# sourceMappingURL=ractive.js.map
 
-},{}],8:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 module.exports = {
+    storageKey: "henhunt",
     clues: [
         {
-            clue: "An easy one to start - take the first letter from a nearby alliterative station. (Any other alliterative stations you can think of?)",
+            clue: "An easy one to start - take the first letter from a nearby alliterative station. (There are 6 others if you fancy a challenge)",
             letter: 1,
             answer: "Charing Cross",
             hint: "It's so close! Alliterative means the same letter at the start of each word."
@@ -16878,7 +16944,7 @@ module.exports = {
     ]
 }
 
-},{}],9:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 var Ractive = require('ractive');
 
 module.exports = Ractive.extend({
@@ -16899,9 +16965,9 @@ module.exports = Ractive.extend({
 
 });
 
-},{"ractive":7}],10:[function(require,module,exports){
+},{"ractive":10}],13:[function(require,module,exports){
 module.exports={"v":3,"t":[{"t":7,"e":"div","a":{"class":"clues section"},"f":[{"t":7,"e":"h2","f":["The Clues"]}," ",{"t":7,"e":"hr"}," ",{"t":7,"e":"div","a":{"class":"clues__list"},"f":[{"t":4,"f":[{"t":7,"e":"div","a":{"class":"clue"},"f":[{"t":7,"e":"h3","a":{"class":"clue__title"},"f":[{"t":2,"x":{"r":["i"],"s":"_0+1"}}," - ",{"t":2,"r":"clue"}]}," ",{"t":7,"e":"h4","a":{"class":"clue__letter-number"},"f":[{"t":2,"x":{"r":["ordinal","letter"],"s":"_0(_1)"}}]}," ",{"t":7,"e":"div","a":{"class":"clue__inputs"},"f":[{"t":4,"f":[{"t":4,"f":[{"t":7,"e":"span","a":{"class":"clue__space"},"f":[{"t":2,"r":"."}]}],"n":50,"x":{"r":["."],"s":"_0==\"/\""}},{"t":4,"n":51,"f":[{"t":7,"e":"input","a":{"class":["clue__input",{"t":2,"x":{"r":["solved"],"s":"_0?\"--correct\":\"--incorrect\""}}," ",{"t":2,"x":{"r":["l","letter"],"s":"_0+1==_1?\"required\":\"\""}}],"data-clue-id":[{"t":2,"r":"i"}],"data-letter-id":[{"t":2,"r":"l"}],"type":"text","maxlength":"1"},"v":{"keyup":"keyUp"}}],"x":{"r":["."],"s":"_0==\"/\""}}],"i":"l","r":"letters"}]}]}],"i":"i","r":"clues"}]}]}]}
-},{}],11:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 /**
  * @module:   clues
  * @scss:     ./source/css/module/clues.scss
@@ -16912,6 +16978,7 @@ module.exports={"v":3,"t":[{"t":7,"e":"div","a":{"class":"clues section"},"f":[{
 var Module = require('../abstract-module');
 
 var ordinal = require('mout/number/ordinal');
+var set = require('mout/object/set');
 var config = require('../../config');
 
 module.exports = Module.extend({
@@ -16923,7 +16990,8 @@ module.exports = Module.extend({
             ordinal: function (n) {
                 return ordinal(n);
             },
-            clues: config.clues
+            clues: config.clues,
+            storageKey: config.storageKey
         }
     },
 
@@ -16938,14 +17006,34 @@ module.exports = Module.extend({
             // unsolved by default
             this.set(`clues[${key}].solved`, false)
         }
+
+        // if you want to clear...
+        // this.removeLocalStorage(this.get("storageKey"));
     },
 
     onrender: function () {
 
         this.on("keyUp", this.onLetterInput.bind(this));
+
+        this.checkStoredAnswers();
     },
 
-    generateLetterArray: function(ans) {
+    checkStoredAnswers: function () {
+
+        var storedAnswers = this.getLocalStorage(this.get("storageKey"));
+        for (var answer in storedAnswers) {
+            // mark as solved if key letter is correct
+            var correctLetterId = this.get(`clues[${answer}].letter`)-1,
+                correctLetter = this.get(`clues[${answer}].letters[${correctLetterId}]`);
+            if (correctLetter === storedAnswers[answer][correctLetterId]) this.set(`clues[${answer}].solved`, true);
+
+            // fill inputs with stored letters
+            var inputs = this.findAll(`input[data-clue-id='${answer}']`);
+            if (inputs) this.fillInput(inputs, storedAnswers[answer]);
+        }
+    },
+
+    generateLetterArray: function (ans) {
 
         var arr = ans.toLowerCase().replace(/\W/g, "/").split("");
         return arr;
@@ -16989,21 +17077,51 @@ module.exports = Module.extend({
         }
     },
 
+    fillInput: function (inputs, values) {
+        for (var i = 0; i < inputs.length; i++) {
+            var value = values[inputs[i].getAttribute('data-letter-id')];
+            if (typeof value !== "undefined") inputs[i].value = value;
+        }
+    },
+
     checkInput: function (input) {
         var clueId = input.getAttribute("data-clue-id"),
             letterId = parseFloat(input.getAttribute("data-letter-id")),
             clue = this.get(`clues[${clueId}]`);
 
+        // store input
+        this.storeInput(clueId, letterId, input.value);
+
+        // is key letter?
         if (letterId+1 != clue.letter) return;
 
+        // is solved?
         this.set(`clues[${clueId}].solved`, clue.letters[letterId] === input.value ? true : false);
+    },
+
+    storeInput: function (clueId, letterId, value) {
+        var storedAnswers = this.getLocalStorage(this.get("storageKey")) || {};
+        set(storedAnswers, `${clueId}.${letterId}`, value);
+        this.setLocalStorage(this.get("storageKey"), storedAnswers);
+    },
+
+    getLocalStorage: function (keyName) {
+        return JSON.parse(localStorage.getItem(keyName));
+    },
+
+    setLocalStorage: function (keyName, keyValue) {
+        localStorage.setItem(keyName, JSON.stringify(keyValue));
+    },
+
+    removeLocalStorage: function (keyName) {
+        localStorage.removeItem(keyName);
     }
 
 });
 
-},{"../../config":8,"../abstract-module":9,"./clues.html":10,"mout/number/ordinal":4}],12:[function(require,module,exports){
+},{"../../config":11,"../abstract-module":12,"./clues.html":13,"mout/number/ordinal":5,"mout/object/set":8}],15:[function(require,module,exports){
 module.exports={"v":3,"t":[{"t":7,"e":"div","a":{"class":"hero"},"f":[{"t":7,"e":"div","a":{"class":"hero__logo"}}]}]}
-},{}],13:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 /**
  * @module:   hero
  * @scss:     ./source/css/module/hero.scss
@@ -17019,16 +17137,16 @@ module.exports = Module.extend({
 
 });
 
-},{"../abstract-module":9,"./hero.html":12}],14:[function(require,module,exports){
+},{"../abstract-module":12,"./hero.html":15}],17:[function(require,module,exports){
 /*auto-generated*/
 var modules = {};
 modules['ui-clues'] = require('./clues/clues.js');modules['ui-hero'] = require('./hero/hero.js');modules['ui-intro'] = require('./intro/intro.js');
 
 module.exports = modules;
 
-},{"./clues/clues.js":11,"./hero/hero.js":13,"./intro/intro.js":16}],15:[function(require,module,exports){
+},{"./clues/clues.js":14,"./hero/hero.js":16,"./intro/intro.js":19}],18:[function(require,module,exports){
 module.exports={"v":3,"t":[{"t":7,"e":"div","a":{"class":"intro section"},"t2":"slide","f":[{"t":7,"e":"div","a":{"class":["intro__toggle",{"t":2,"x":{"r":["visible"],"s":"_0?\"--on\":\"--off\""}}]},"v":{"click":"toggleIntro"},"f":["×"]}," ",{"t":4,"f":[{"t":7,"e":"div","a":{"class":"intro__blurb"},"t0":{"n":"slide","a":[{"easing":"ease-in-out"}]},"f":[{"t":7,"e":"h2","f":["The Hunt"]}," ",{"t":7,"e":"hr"}," ",{"t":7,"e":"p","f":["There are 15 clues: the solution to each clue will give you a letter. These letters will form the resting place of the legendary Hen Hunt treasure. Read all the clues first to see if you have any ideas and then plot your route carefully - the clues are only in order of the letters they yield, not geographical or chronological. The fastest team will win a prize. And to prove you haven’t just Googled the solution get a team photo at each location (for prosperity as well 😉)."]}," ",{"t":7,"e":"p","f":["Hints: text \"clue\" and the clue number you need a hint for to ",{"t":7,"e":"a","a":{"href":"+441329801049"},"f":["01329801049"]}," (eg. CLUE 1)"]}]}],"r":"visible"}]}]}
-},{}],16:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 /**
  * @module:   intro
  * @scss:     ./source/css/module/intro.scss
@@ -17061,9 +17179,9 @@ module.exports = Module.extend({
 
 });
 
-},{"../abstract-module":9,"./intro.html":15,"ractive-transitions-slide":6}],17:[function(require,module,exports){
+},{"../abstract-module":12,"./intro.html":18,"ractive-transitions-slide":9}],20:[function(require,module,exports){
 module.exports={"v":3,"t":[{"t":7,"e":"ui-hero"}," ",{"t":7,"e":"ui-intro"}," ",{"t":7,"e":"ui-clues"}]}
-},{}],18:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 var Ractive = require('ractive');
 Ractive.components = require('../module');
 
@@ -17091,7 +17209,7 @@ module.exports = function() {
 
 };
 
-},{"../module":14,"./main.html":17,"ractive":7}]},{},[1])
+},{"../module":17,"./main.html":20,"ractive":10}]},{},[1])
 
 
 //# sourceMappingURL=app.js.map

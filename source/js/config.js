@@ -1,7 +1,8 @@
 module.exports = {
+    storageKey: "henhunt",
     clues: [
         {
-            clue: "An easy one to start - take the first letter from a nearby alliterative station. (Any other alliterative stations you can think of?)",
+            clue: "An easy one to start - take the first letter from a nearby alliterative station. (There are 6 others if you fancy a challenge)",
             letter: 1,
             answer: "Charing Cross",
             hint: "It's so close! Alliterative means the same letter at the start of each word."

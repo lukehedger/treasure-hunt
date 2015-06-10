@@ -8,6 +8,7 @@
 var Module = require('../abstract-module');
 
 var ordinal = require('mout/number/ordinal');
+var set = require('mout/object/set');
 var config = require('../../config');
 
 module.exports = Module.extend({
@@ -19,7 +20,8 @@ module.exports = Module.extend({
             ordinal: function (n) {
                 return ordinal(n);
             },
-            clues: config.clues
+            clues: config.clues,
+            storageKey: config.storageKey
         }
     },
 
@@ -34,14 +36,34 @@ module.exports = Module.extend({
             // unsolved by default
             this.set(`clues[${key}].solved`, false)
         }
+
+        // if you want to clear...
+        // this.removeLocalStorage(this.get("storageKey"));
     },
 
     onrender: function () {
 
         this.on("keyUp", this.onLetterInput.bind(this));
+
+        this.checkStoredAnswers();
     },
 
-    generateLetterArray: function(ans) {
+    checkStoredAnswers: function () {
+
+        var storedAnswers = this.getLocalStorage(this.get("storageKey"));
+        for (var answer in storedAnswers) {
+            // mark as solved if key letter is correct
+            var correctLetterId = this.get(`clues[${answer}].letter`)-1,
+                correctLetter = this.get(`clues[${answer}].letters[${correctLetterId}]`);
+            if (correctLetter === storedAnswers[answer][correctLetterId]) this.set(`clues[${answer}].solved`, true);
+
+            // fill inputs with stored letters
+            var inputs = this.findAll(`input[data-clue-id='${answer}']`);
+            if (inputs) this.fillInput(inputs, storedAnswers[answer]);
+        }
+    },
+
+    generateLetterArray: function (ans) {
 
         var arr = ans.toLowerCase().replace(/\W/g, "/").split("");
         return arr;
@@ -85,14 +107,44 @@ module.exports = Module.extend({
         }
     },
 
+    fillInput: function (inputs, values) {
+        for (var i = 0; i < inputs.length; i++) {
+            var value = values[inputs[i].getAttribute('data-letter-id')];
+            if (typeof value !== "undefined") inputs[i].value = value;
+        }
+    },
+
     checkInput: function (input) {
         var clueId = input.getAttribute("data-clue-id"),
             letterId = parseFloat(input.getAttribute("data-letter-id")),
             clue = this.get(`clues[${clueId}]`);
 
+        // store input
+        this.storeInput(clueId, letterId, input.value);
+
+        // is key letter?
         if (letterId+1 != clue.letter) return;
 
+        // is solved?
         this.set(`clues[${clueId}].solved`, clue.letters[letterId] === input.value ? true : false);
+    },
+
+    storeInput: function (clueId, letterId, value) {
+        var storedAnswers = this.getLocalStorage(this.get("storageKey")) || {};
+        set(storedAnswers, `${clueId}.${letterId}`, value);
+        this.setLocalStorage(this.get("storageKey"), storedAnswers);
+    },
+
+    getLocalStorage: function (keyName) {
+        return JSON.parse(localStorage.getItem(keyName));
+    },
+
+    setLocalStorage: function (keyName, keyValue) {
+        localStorage.setItem(keyName, JSON.stringify(keyValue));
+    },
+
+    removeLocalStorage: function (keyName) {
+        localStorage.removeItem(keyName);
     }
 
 });
