@@ -31,10 +31,10 @@ module.exports = Module.extend({
         var clues = this.get("clues");
         for (key in clues) {
             var ans = clues[key].answer;
-            this.set(`clues[${key}].letters`, this.generateLetterArray(ans));
+            this.set("clues[" + key + "].letters", this.generateLetterArray(ans));
 
             // unsolved by default
-            this.set(`clues[${key}].solved`, false)
+            this.set("clues[" + key + "].solved", false)
         }
 
         // if you want to clear...
@@ -53,12 +53,12 @@ module.exports = Module.extend({
         var storedAnswers = this.getLocalStorage(this.get("storageKey"));
         for (var answer in storedAnswers) {
             // mark as solved if key letter is correct
-            var correctLetterId = this.get(`clues[${answer}].letter`)-1,
-                correctLetter = this.get(`clues[${answer}].letters[${correctLetterId}]`);
-            if (correctLetter === storedAnswers[answer][correctLetterId]) this.set(`clues[${answer}].solved`, true);
+            var correctLetterId = this.get("clues[" + answer + "].letter")-1,
+                correctLetter = this.get("clues[" + answer + "].letters[" + correctLetterId + "]");
+            if (correctLetter === storedAnswers[answer][correctLetterId]) this.set("clues[" + answer + "].solved", true);
 
             // fill inputs with stored letters
-            var inputs = this.findAll(`input[data-clue-id='${answer}']`);
+            var inputs = this.findAll("input[data-clue-id='" + answer + "']");
             if (inputs) this.fillInput(inputs, storedAnswers[answer]);
         }
     },
@@ -117,7 +117,7 @@ module.exports = Module.extend({
     checkInput: function (input) {
         var clueId = input.getAttribute("data-clue-id"),
             letterId = parseFloat(input.getAttribute("data-letter-id")),
-            clue = this.get(`clues[${clueId}]`);
+            clue = this.get("clues[" + clueId + "]");
 
         // store input
         this.storeInput(clueId, letterId, input.value.toLowerCase());
@@ -126,12 +126,12 @@ module.exports = Module.extend({
         if (letterId+1 != clue.letter) return;
 
         // is solved?
-        this.set(`clues[${clueId}].solved`, clue.letters[letterId] === input.value.toLowerCase() ? true : false);
+        this.set("clues[" + clueId + "].solved", clue.letters[letterId] === input.value.toLowerCase() ? true : false);
     },
 
     storeInput: function (clueId, letterId, value) {
         var storedAnswers = this.getLocalStorage(this.get("storageKey")) || {};
-        set(storedAnswers, `${clueId}.${letterId}`, value);
+        set(storedAnswers, clueId + "." + letterId, value);
         this.setLocalStorage(this.get("storageKey"), storedAnswers);
     },
 
