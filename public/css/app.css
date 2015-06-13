@@ -839,8 +839,10 @@ hr {
 .clues .clue__input, .clues .clue__input--correct, .clues .clue__input--incorrect {
   width: 36px;
   height: 56px;
+  padding: 0;
   border: 0;
   border-bottom: 1px solid #343433;
+  border-radius: 0;
   margin-right: 3px;
   font-size: 36px;
   background: none;
