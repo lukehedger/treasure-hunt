@@ -41,8 +41,10 @@
     .clue__input {
         width: 36px;
         height: 56px;
+        padding: 0;
         border: 0;
         border-bottom: 1px solid $color-grey;
+        border-radius: 0;
         margin-right: 3px;
         font-size: 36px;
         background: none;
